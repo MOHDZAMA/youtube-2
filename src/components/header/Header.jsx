@@ -1,13 +1,14 @@
 import React from "react";
 import "./style.scss";
 
-function Header() {
+function Header({ toggleSidebar }) {
   return (
     <div className="header">
       <div className="header-left">
         <img
           src="https://raw.githubusercontent.com/parthwebdev/UI-Components/7e774add0ddd88a4fb4057b01ad1f75a3edb4a03/Sidebars/01/svg/menu.svg"
           alt="menu"
+          onClick={toggleSidebar}
         />
 
         <img
