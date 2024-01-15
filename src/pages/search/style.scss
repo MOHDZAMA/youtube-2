@@ -1,0 +1,11 @@
+.search {
+  height: calc(100vh - 80px);
+  width: calc(100% - 250px);
+  overflow-x: scroll;
+  margin: 25px 5px 15px 50px;
+  display: flex;
+  justify-content: center;
+  .search-conatiner {
+    width: 75%;
+  }
+}

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from ".//pages/home/Home";
 import Watch from "./pages/watch/Watch";
 import Sidebar from "./components/sidebar/Sidebar";
+import Channel from "./pages/channel/Channel";
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 

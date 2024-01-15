@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   /* background-color: rgba(6, 6, 6, 0.8); */
+  font-family: "Gill sans", sans-serif;
 }
 ::-webkit-scrollbar {
   display: none;
