@@ -1,10 +1,10 @@
 import React from "react";
 import "./style.scss";
+
 import dayjs from "dayjs";
 
 import Card from "./card2/Card2";
 import { suggestedData } from "../../data/suggested";
-import Sidebar from "../../components/sidebar/Sidebar";
 import { videodetailsData } from "../../data/videodetails";
 import Comment from "./comment/Comment";
 
