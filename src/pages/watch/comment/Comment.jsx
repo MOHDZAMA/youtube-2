@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
 import dayjs from "dayjs";
+import useFetch from "../../../hooks/useFetch";
 
 import { commentData } from "../../../data/comment";
 
+import { useParams } from "react-router-dom";
 function Comment() {
+  const param = useParams();
   const [paramData, setParamData] = useState({
     part: "snippet",
-    videoId: "7ghhRHRP6t4",
+    videoId: param.id,
     maxResults: "100",
   });
   // const { data: commentData, loading, error } = useFetch("/commentThreads", paramData);
+
+  useEffect(() => {
+    setParamData({
+      part: "snippet",
+      videoId: param.id,
+      maxResults: "100",
+    });
+  }, [param.id]);
 
   return (
     <>

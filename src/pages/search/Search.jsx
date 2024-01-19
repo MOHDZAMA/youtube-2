@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.scss";
-import { searchData } from "../../data/search";
+// import { searchData } from "../../data/search";
+import useFetch from "../../hooks/useFetch";
 
 import Card4 from "./card4/Card4";
+import { useParams } from "react-router-dom";
 
 function Search() {
-  const [paramData, setParamData] = useState({
-    q: "games",
-    part: "snippet,id",
-    maxResults: "50",
-    order: "date",
-  });
-  // const { data: searchData, loading, error } = useFetch("/search", paramData);
-  console.log(searchData);
+  const param = useParams();
+  const [paramData, setParamData] = useState("");
+  const { data: searchData, loading, error } = useFetch("/search", paramData);
+
+  useEffect(() => {
+    if (param.query !== null) {
+      setParamData({
+        q: param.query,
+        part: "snippet,id",
+        maxResults: "50",
+        order: "date",
+      });
+    }
+  }, [param.query]);
 
   return (
     <div className="search">

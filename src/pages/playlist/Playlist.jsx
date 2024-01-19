@@ -1,22 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.scss";
 
-import { playlistdetailsData } from "../../data/playlistdetails";
-import { playlistvideosData } from "../../data/playlistvideos";
+// import { playlistdetailsData } from "../../data/playlistdetails";
+// import { playlistvideosData } from "../../data/playlistvideos";
 
 import Card5 from "./card5/Card5";
+import { useParams } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
 
 function Playlist() {
+  const param = useParams();
+
   const [paramData, setParamData] = useState({
-    playlistId: "RDZiQo7nAkQHU",
+    playlistId: param.id,
     part: "snippet",
     maxResults: "50",
   });
-  // const { data: searchData, loading, error } = useFetch("/playlistItems", paramData);
-  // console.log(searchData);
 
-  console.log(playlistdetailsData);
-  console.log(playlistvideosData);
+  const [paramData2, setParamData2] = useState({
+    id: param.id,
+    part: "snippet",
+  });
+
+  const {
+    data: playlistvideosData,
+    loading,
+    error,
+  } = useFetch("/playlistItems", paramData);
+  const { data: playlistdetailsData } = useFetch("/playlists", paramData2);
+
+  useEffect(() => {
+    setParamData({
+      playlistId: param.id,
+      part: "snippet",
+      maxResults: "50",
+    });
+    setParamData2({
+      id: param.id,
+      part: "snippet",
+    });
+  }, [param.id]);
+
   return (
     <div className="playlist">
       <div className="playlist-l">

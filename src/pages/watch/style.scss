@@ -96,7 +96,16 @@
         margin-top: 15px;
       }
     }
-    @media screen and (max-width: 1305px) {
+  }
+
+  .watch-r {
+    flex: 0.35;
+    margin: 20px 5px 0px 0px;
+  }
+}
+@media screen and (max-width: 1305px) {
+  .watch {
+    .watch-l {
       .watch-l-container {
         width: 720px;
         iframe {
@@ -105,12 +114,8 @@
       }
     }
   }
-
-  .watch-r {
-    flex: 0.35;
-    margin: 20px 5px 0px 0px;
-  }
 }
+
 @media screen and (max-width: 1150px) {
   .watch {
     flex-direction: column;
