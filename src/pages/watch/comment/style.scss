@@ -17,3 +17,9 @@
     margin: 5px 0px 0px 10px;
   }
 }
+
+@media screen and (max-width: 1150px) {
+  .comment {
+    display: none;
+  }
+}

@@ -2,10 +2,24 @@ import React from "react";
 import "./style.scss";
 
 import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
 
 function Card4({ item }) {
+  const navigate = useNavigate();
+  const handleChannelClick = (e) => {
+    e.stopPropagation();
+    navigate(`/${item?.snippet?.channelId}/videos`);
+  };
+
+  const handleClick = () => {
+    if (item.id.videoId) {
+      navigate(`/watch/${item.id.videoId}`);
+    } else if (item.id.playlistId) {
+      navigate(`/playlist/${item.id.playlistId}`);
+    }
+  };
   return (
-    <div className="card4">
+    <div className="card4" onClick={handleClick}>
       <img
         src={item?.snippet?.thumbnails?.high?.url || "./no-thumbnail.jpg"}
         alt="no-thumbnail.jpg"
@@ -17,7 +31,9 @@ function Card4({ item }) {
             : item?.snippet?.title}
         </h4>
         <div className="card4-b-info-s">
-          <span>{item?.snippet?.channelTitle}</span>
+          <span onClick={handleChannelClick}>
+            {item?.snippet?.channelTitle}
+          </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -35,6 +51,7 @@ function Card4({ item }) {
           {dayjs(item?.snippet?.publishTime.slice(0, 10)).format("MMM D, YYYY")}
         </span>
         <img src="./youtube.svg" alt="chanel_logo" />
+
         <small>{item?.snippet?.description.slice(0, 100) + "..."}</small>
       </div>
     </div>

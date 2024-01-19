@@ -1,9 +1,12 @@
 .card2 {
-  width: 360px;
+  width: 380px;
   height: 100px;
   display: flex;
   flex-direction: row;
-  margin: 10px 0px 10px 0px;
+  margin: 5px 0px 10px 0px;
+  &:hover {
+    cursor: pointer;
+  }
   img {
     width: 55%;
     height: 100%;
@@ -18,10 +21,6 @@
     span {
       font-size: 14px;
       color: gray;
-
-      &:hover {
-        cursor: pointer;
-      }
     }
     h4 {
       font-size: 15px;
@@ -29,5 +28,11 @@
       margin-top: 3px;
       margin-bottom: 5px;
     }
+  }
+}
+@media screen and (max-width: 768px) {
+  .card2 {
+    width: 320px;
+    height: 100px;
   }
 }

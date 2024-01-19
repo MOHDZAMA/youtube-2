@@ -4,7 +4,6 @@ import { useLocation, useParams } from "react-router-dom";
 
 function Sidebar({ isSidebarOpen }) {
   const location = useLocation();
-  console.log(location);
 
   return (
     <div className="sidebar-top">

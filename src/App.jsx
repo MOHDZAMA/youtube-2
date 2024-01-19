@@ -23,7 +23,7 @@ function App() {
         <Route path="/" element={<Home isSidebarOpen={isSidebarOpen} />}>
           <Route path="" element={<Feed />} />
           <Route path="search/:query" element={<Search />} />
-          <Route path="playlist" element={<Playlist />} />
+          <Route path="playlist/:id" element={<Playlist />} />
           <Route path=":id/videos" element={<Channel />} />
         </Route>
         <Route path="/watch/:id" element={<Watch />} />

@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
 import dayjs from "dayjs";
 
 import { commentData } from "../../../data/comment";
 
 function Comment() {
-  console.log(commentData.items);
+  const [paramData, setParamData] = useState({
+    part: "snippet",
+    videoId: "7ghhRHRP6t4",
+    maxResults: "100",
+  });
+  // const { data: commentData, loading, error } = useFetch("/commentThreads", paramData);
 
   return (
     <>

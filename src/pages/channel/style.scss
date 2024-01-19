@@ -1,10 +1,10 @@
 .channel {
-  height: calc(100vh - 80px);
-  // width: 100%;
-  width: calc(100% - 250px);
+  // height: calc(100vh - 80px);
+  height: 100%;
+  width: 100%;
+  // width: calc(100% - 250px);
   overflow-x: scroll;
   display: flex;
-  // justify-content: center;
   align-items: center;
   flex-direction: column;
 
@@ -62,6 +62,67 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .channel {
+    gap: 10px;
+
+    .banner {
+      width: 90%;
+      img {
+        width: 100%;
+        height: 120px;
+      }
+    }
+    .channel-info {
+      width: 90%;
+      h1 {
+        font-size: 17px;
+      }
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      span {
+        margin: 5px 5px 5px 0px;
+        font-size: 12px;
+      }
+      p {
+        margin: 5px 0px 5px 0px;
+        font-size: 10px;
+      }
+    }
+    button {
+      height: 20px;
+      margin-right: 10px;
+      padding: 5px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 5px;
+      font-size: 10px;
+    }
+
+    .channel-videos {
+      width: 90%;
+      margin-top: 20px;
+      .channel-videos-t {
+        width: 100%;
+        span {
+          margin-right: 10px;
+          font-size: 12px;
+        }
+      }
+      .channel-videos-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
     }
   }
 }

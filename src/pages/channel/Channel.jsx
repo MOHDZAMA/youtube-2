@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
 
 import { channeldetailData } from "../../data/channeldetail";
@@ -6,6 +6,21 @@ import { channelvideosData } from "../../data/channelvideos";
 import Card3 from "./card3/Card3";
 
 function Channel() {
+  const [paramData, setParamData] = useState({
+    part: "snippet,statistics",
+    id: "UCBVjMGOIkavEAhyqpxJ73Dw",
+  });
+
+  const [paramData2, setParamData2] = useState({
+    channelId: "UCBVjMGOIkavEAhyqpxJ73Dw",
+    part: "snippet,id",
+    order: "date",
+    maxResults: "50",
+  });
+
+  // const { data: channeldetailData, loading, error } = useFetch("/channels", paramData);
+  // const { data: channelvideosData, loading, error } = useFetch("/search", paramData2);
+
   console.log(channelvideosData);
 
   const { snippet, statistics, brandingSettings, contentDetails } =

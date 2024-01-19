@@ -1,17 +1,32 @@
 import React from "react";
 import "./style.scss";
+import { useNavigate } from "react-router-dom";
 
 import dayjs from "dayjs";
 
 function Card({ item }) {
+  const navigate = useNavigate();
+  const handleChannelClick = (e) => {
+    e.stopPropagation();
+    navigate(`/${item?.snippet?.channelId}/videos`);
+  };
+
+  const handleClick = () => {
+    if (item?.id?.videoId) {
+      navigate(`/watch/${item.id.videoId}`);
+    } else if (item.id.playlistId) {
+      navigate(`/playlist/${item.id.playlistId}`);
+    }
+  };
   return (
-    <div className="card">
+    <div className="card" onClick={handleClick}>
       <img
-        src={item?.snippet?.thumbnails?.high?.url || "./no-thumbnail.jpg"}
+        src={item?.snippet?.thumbnails?.high?.url || "../thumbnail.png"}
         alt="no-thumbnail.jpg"
       />
       <div className="card-b">
         <img src="./youtube.svg" alt="chanel_logo" />
+
         <div className="card-b-info">
           <h4>
             {item?.snippet?.title?.length > 50
@@ -19,7 +34,9 @@ function Card({ item }) {
               : item?.snippet?.title}
           </h4>
           <div className="card-b-info-s">
-            <span>{item?.snippet?.channelTitle}</span>
+            <span onClick={handleChannelClick}>
+              {item?.snippet?.channelTitle}
+            </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"

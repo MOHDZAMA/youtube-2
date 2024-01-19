@@ -10,17 +10,20 @@
     flex: 0.65;
     display: flex;
     justify-content: right;
-    margin: 30px;
+    margin: 25px;
     width: 100%;
     height: 100%;
     // max-width: 850px;
     .watch-l-container {
-      width: 850px;
+      width: 870px;
+
       iframe {
-        width: 850px;
+        width: 100%;
         height: 480px;
         border-radius: 10px;
         border: none;
+        box-shadow: 0px 0px 100px 0px rgba(255, 255, 255, 0.65);
+
         &:hover {
           cursor: pointer;
         }
@@ -93,10 +96,112 @@
         margin-top: 15px;
       }
     }
+    @media screen and (max-width: 1305px) {
+      .watch-l-container {
+        width: 720px;
+        iframe {
+          height: 400px;
+        }
+      }
+    }
   }
 
   .watch-r {
     flex: 0.35;
     margin: 20px 5px 0px 0px;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .watch {
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    .watch-l {
+      justify-content: center;
+      margin: 20px 0px;
+    }
+    .watch-r {
+      width: 720px;
+      display: flex;
+
+      // justify-content: center;
+      // align-items: center;
+      flex-direction: column;
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .watch {
+    .watch-l {
+      .watch-l-container {
+        width: 520px;
+        iframe {
+          height: 320px;
+        }
+        .watch-l-info {
+          h2 {
+            font-size: 15px;
+          }
+          .watch-l-info-c {
+            .watch-l-info-c-t {
+              img {
+                width: 30px;
+                height: 30px;
+              }
+              button {
+                margin-left: 10px;
+                height: 25px;
+                width: 60px;
+                border-radius: 15px;
+                border: none;
+                font-size: 12px;
+                padding: 1px;
+              }
+              .watch-l-info-c-t-s {
+                h4 {
+                  font-size: 12px;
+                }
+                span {
+                  font-size: 10px;
+                }
+              }
+            }
+            .watch-l-info-c-m {
+              button {
+                margin-right: 5px;
+                height: 25px;
+                border-radius: 15px;
+                border: none;
+                font-size: 10px;
+                padding: 3px;
+                background-color: rgba(32, 32, 32, 0.87);
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .watch-r {
+      width: 520px;
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .watch {
+    .watch-l {
+      .watch-l-container {
+        width: 350px;
+        iframe {
+          height: 230px;
+        }
+      }
+    }
+    .watch-r {
+      width: 350px;
+    }
   }
 }

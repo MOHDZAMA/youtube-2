@@ -2,10 +2,19 @@ import React from "react";
 import "./style.scss";
 
 import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
 
 function Card3({ item }) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    if (item.id.videoId) {
+      navigate(`/watch/${item.id.videoId}`);
+    } else if (item.id.playlistId) {
+      navigate(`/playlist/${item.id.playlistId}`);
+    }
+  };
   return (
-    <div className="card3">
+    <div className="card3" onClick={handleClick}>
       <img
         src={item?.snippet?.thumbnails?.high?.url || "./no-thumbnail.jpg"}
         alt="no-thumbnail.jpg"

@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
 
+import { useNavigate } from "react-router-dom";
+
 function Header({ toggleSidebar }) {
+  const navigate = useNavigate();
+  const [searchvalue, setSearchvalue] = useState("");
+
   return (
     <div className="header">
       <div className="header-left">
@@ -14,11 +19,16 @@ function Header({ toggleSidebar }) {
         <img
           src="https://www.logo.wine/a/logo/YouTube/YouTube-White-Dark-Background-Logo.wine.svg"
           alt="logo"
+          onClick={() => navigate("/")}
         />
       </div>
       <div className="header-middle">
-        <input type="text" placeholder="Search" />
-        <button>
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={(e) => setSearchvalue(e.target.value)}
+        />
+        <button onClick={() => navigate(`/search/${searchvalue}`)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
