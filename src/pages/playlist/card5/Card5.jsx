@@ -15,7 +15,7 @@ function Card5({ item }) {
     <div
       className="card5"
       onClick={() => navigate(`/watch/${item?.snippet?.resourceId?.videoId}`)}
-      key={item?.id?.videoId}
+      key={item?.id}
     >
       <img
         src={item?.snippet?.thumbnails?.medium?.url || "./no-thumbnail.jpg"}
