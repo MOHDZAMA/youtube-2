@@ -1,6 +1,5 @@
 import React from "react";
 import "./style.scss";
-
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
@@ -20,12 +19,8 @@ function Card2({ item }) {
     navigate(`/${item?.snippet?.channelId}/videos`);
   };
 
-  const shortenTitle = (title) => {
-    if (title && title.length > 50) {
-      return title.slice(0, 50) + "...";
-    }
-    return title;
-  };
+  const shortenTitle = (title) =>
+    title?.length > 50 ? `${title.slice(0, 50)}...` : title;
 
   return (
     <div className="card2" onClick={handleClick}>
@@ -33,7 +28,6 @@ function Card2({ item }) {
         src={item?.snippet?.thumbnails?.medium?.url || "../thumbnail.png"}
         alt="thumbnail"
       />
-
       <div className="card2-b-info">
         <h4>{shortenTitle(item?.snippet?.title)}</h4>
         <span onClick={handleChannelClick}>{item?.snippet?.channelTitle}</span>

@@ -1,33 +1,37 @@
+// import {searchData} from '../../data/search';
 import React, { useState, useEffect } from "react";
 import "./style.scss";
-// import { searchData } from "../../data/search";
-import useFetch from "../../hooks/useFetch";
-
-import Card4 from "./card4/Card4";
 import { useParams } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
+import Card4 from "./card4/Card4";
 
 function Search() {
-  const param = useParams();
-  const [paramData, setParamData] = useState("");
+  const { query } = useParams();
+  const [paramData, setParamData] = useState({
+    q: query,
+    part: "snippet,id",
+    maxResults: "50",
+    order: "date",
+  });
   const { data: searchData, loading, error } = useFetch("/search", paramData);
 
   useEffect(() => {
-    if (param.query !== null) {
+    if (query) {
       setParamData({
-        q: param.query,
+        q: query,
         part: "snippet,id",
         maxResults: "50",
         order: "date",
       });
     }
-  }, [param.query]);
+  }, [query]);
 
   return (
     <div className="search">
       <div className="search-container">
-        {searchData?.items?.map((item) => {
-          return <Card4 item={item} key={item.id.videoId} />;
-        })}
+        {searchData?.items?.map((item) => (
+          <Card4 item={item} key={item.id.videoId} />
+        ))}
       </div>
     </div>
   );

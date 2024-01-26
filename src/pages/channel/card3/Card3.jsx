@@ -1,41 +1,48 @@
 import React from "react";
 import "./style.scss";
-
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
 function Card3({ item }) {
   const navigate = useNavigate();
+
   const handleClick = () => {
-    if (item.id.videoId) {
-      navigate(`/watch/${item.id.videoId}`);
-    } else if (item.id.playlistId) {
-      navigate(`/playlist/${item.id.playlistId}`);
+    const videoId = item?.id?.videoId;
+    const playlistId = item?.id?.playlistId;
+
+    if (videoId) {
+      navigate(`/watch/${videoId}`);
+    } else if (playlistId) {
+      navigate(`/playlist/${playlistId}`);
     }
   };
-  return (
-    <div className="card3" onClick={handleClick}>
-      <img
-        src={item?.snippet?.thumbnails?.high?.url || "./no-thumbnail.jpg"}
-        alt="no-thumbnail.jpg"
-      />
-      <div className="card3-b">
-        <div className="card3-b-info">
-          <h4>
-            {item?.snippet?.title?.length > 50
-              ? item?.snippet?.title.slice(0, 80) + "..."
-              : item?.snippet?.title}
-          </h4>
-          <div className="card3-b-info-s"></div>
-          <span>
-            {dayjs(item?.snippet?.publishTime.slice(0, 10)).format(
-              "MMM D, YYYY"
-            )}
-          </span>
+
+  if (item !== null) {
+    const { snippet } = item;
+    const thumbnailUrl =
+      item?.snippet?.thumbnails?.high?.url || "./no-thumbnail.jpg";
+    const formattedTitle =
+      snippet?.title?.length > 50
+        ? `${snippet.title.slice(0, 50)}...`
+        : snippet?.title || "";
+    const formattedPublishTime = dayjs(
+      snippet?.publishTime?.slice(0, 10)
+    ).format("MMM D, YYYY");
+
+    return (
+      <div className="card3" onClick={handleClick}>
+        <img src={thumbnailUrl} alt="no-thumbnail.jpg" />
+        <div className="card3-b">
+          <div className="card3-b-info">
+            <h4>{formattedTitle}</h4>
+            <div className="card3-b-info-s"></div>
+            <span>{formattedPublishTime}</span>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
 }
-
 export default Card3;

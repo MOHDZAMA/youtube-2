@@ -1,9 +1,7 @@
+// import { searchData as data } from "../../data/search";
 import React, { useState } from "react";
 import "./style.scss";
-
 import Card from "./card/Card";
-// import { searchData as data } from "../../data/search";
-
 import useFetch from "../../hooks/useFetch";
 
 function Feed() {
@@ -18,9 +16,9 @@ function Feed() {
 
   return (
     <div className="feed">
-      {data?.items?.map((item) => {
-        return <Card item={item} key={item.id.videoId} />;
-      })}
+      {data?.items?.map((item) => (
+        <Card item={item} key={item.id.videoId} />
+      ))}
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Header from "./components/header/Header";
 import Home from ".//pages/home/Home";
 import Watch from "./pages/watch/Watch";
@@ -11,7 +10,6 @@ import Feed from "./pages/feed/Feed";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };

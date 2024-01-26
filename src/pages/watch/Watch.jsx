@@ -1,55 +1,52 @@
-import React, { useEffect, useState } from "react";
-import "./style.scss";
-
-import dayjs from "dayjs";
-
-import Card2 from "./card2/Card2";
 // import { suggestedData } from "../../data/suggested";
 // import { videodetailsData } from "../../data/videodetails";
+import React, { useEffect, useState } from "react";
+import "./style.scss";
+import dayjs from "dayjs";
+import Card2 from "./card2/Card2";
 import Comment from "./comment/Comment";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 
 function Watch() {
-  const param = useParams();
+  const { id } = useParams();
 
   const [paramData, setParamData] = useState({
-    relatedToVideoId: param.id,
+    relatedToVideoId: id,
     part: "id,snippet",
     type: "video",
     maxResults: "50",
   });
-
   const [paramData2, setParamData2] = useState({
     part: "contentDetails,snippet,statistics",
-    id: param.id,
+    id: id,
   });
-
   const { data: suggestedData } = useFetch("/search", paramData);
   const { data, loading, error } = useFetch("/videos", paramData2);
 
   useEffect(() => {
-    setParamData2({
-      part: "contentDetails,snippet,statistics",
-      id: param.id,
-    });
     setParamData({
-      relatedToVideoId: param.id,
+      relatedToVideoId: id,
       part: "id,snippet",
       type: "video",
       maxResults: "50",
     });
-  }, [param.id]);
+    setParamData2({
+      part: "contentDetails,snippet,statistics",
+      id: id,
+    });
+  }, [id]);
 
-  if (data !== null && suggestedData !== null) {
-    const { snippet, statistics } = data.items[0];
+  if (data && suggestedData) {
+    console.log(data);
+    const { snippet, statistics } = data?.items[0];
 
     return (
       <div className="watch">
         <div className="watch-l">
           <div className="watch-l-container">
             <iframe
-              src={`https://www.youtube.com/embed/${param.id}`}
+              src={`https://www.youtube.com/embed/${id}`}
               frameBorder="0"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -94,14 +91,14 @@ function Watch() {
         </div>
 
         <div className="watch-r">
-          {suggestedData?.items?.map((item) => {
-            return (
-              <Card2 item={item} key={item.id.videoId || item.id.playlistId} />
-            );
-          })}
+          {suggestedData?.items?.map((item) => (
+            <Card2 item={item} key={item.id.videoId || item.id.playlistId} />
+          ))}
         </div>
       </div>
     );
+  } else {
+    return <div className="watch">{loading}</div>;
   }
 }
 

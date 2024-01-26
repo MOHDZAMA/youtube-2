@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from "react";
-import "./style.scss";
-
 // import { playlistdetailsData } from "../../data/playlistdetails";
 // import { playlistvideosData } from "../../data/playlistvideos";
-
+import React, { useState, useEffect } from "react";
+import "./style.scss";
 import Card5 from "./card5/Card5";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 
 function Playlist() {
-  const param = useParams();
+  const { id } = useParams();
 
   const [paramData, setParamData] = useState({
-    playlistId: param.id,
+    playlistId: id,
     part: "snippet",
     maxResults: "50",
   });
 
   const [paramData2, setParamData2] = useState({
-    id: param.id,
+    id: id,
     part: "snippet",
   });
 
@@ -27,39 +25,42 @@ function Playlist() {
     loading,
     error,
   } = useFetch("/playlistItems", paramData);
+  console.log(playlistvideosData);
   const { data: playlistdetailsData } = useFetch("/playlists", paramData2);
 
   useEffect(() => {
     setParamData({
-      playlistId: param.id,
+      playlistId: id,
       part: "snippet",
       maxResults: "50",
     });
     setParamData2({
-      id: param.id,
+      id: id,
       part: "snippet",
     });
-  }, [param.id]);
+  }, [id]);
 
-  return (
-    <div className="playlist">
-      <div className="playlist-l">
-        <img
-          src={playlistdetailsData?.items?.[0]?.snippet?.thumbnails?.high?.url}
-          alt="no-thumbnail.jpg"
-        />
-        <div className="playlist-l-info">
-          <h3>{playlistdetailsData?.items?.[0]?.snippet?.title}</h3>
-          <span>{playlistdetailsData?.items?.[0]?.snippet?.channelTitle}</span>
+  if (playlistdetailsData && playlistvideosData) {
+    const { snippet } = playlistdetailsData?.items?.[0];
+    return (
+      <div className="playlist">
+        <div className="playlist-l">
+          <img src={snippet?.thumbnails?.high?.url} alt="no-thumbnail.jpg" />
+          <div className="playlist-l-info">
+            <h3>{snippet?.title}</h3>
+            <span>{snippet?.channelTitle}</span>
+          </div>
+        </div>
+        <div className="playlist-r">
+          {playlistvideosData?.items?.map((item) => {
+            return <Card5 item={item} key={item?.contentDetails?.videoId} />;
+          })}
         </div>
       </div>
-      <div className="playlist-r">
-        {playlistvideosData?.items?.map((item) => {
-          return <Card5 item={item} />;
-        })}
-      </div>
-    </div>
-  );
+    );
+  } else {
+    return <div>{loading}</div>;
+  }
 }
 
 export default Playlist;

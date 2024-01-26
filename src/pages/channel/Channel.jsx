@@ -1,27 +1,25 @@
-import React, { useState, useEffect } from "react";
-import "./style.scss";
-
 // import { channeldetailData } from "../../data/channeldetail";
 // import { channelvideosData } from "../../data/channelvideos";
+
+import React, { useState, useEffect } from "react";
+import "./style.scss";
 import Card3 from "./card3/Card3";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 
 function Channel() {
-  const param = useParams();
+  const { id } = useParams();
 
   const [paramData, setParamData] = useState({
     part: "snippet,statistics",
-    id: param.id,
+    id: id,
   });
-
   const [paramData2, setParamData2] = useState({
-    channelId: param.id,
+    channelId: id,
     part: "snippet,id",
     order: "date",
     maxResults: "50",
   });
-
   const { data: channeldetailData } = useFetch("/channels", paramData);
   const {
     data: channelvideosData,
@@ -32,19 +30,20 @@ function Channel() {
   useEffect(() => {
     setParamData({
       part: "snippet,statistics",
-      id: param.id,
+      id: id,
     });
     setParamData2({
-      channelId: param.id,
+      channelId: id,
       part: "snippet,id",
       order: "date",
       maxResults: "50",
     });
-  }, [param.id]);
+  }, [id]);
 
-  if (channeldetailData !== null || channelvideosData !== null) {
+  if (channeldetailData !== null && channelvideosData !== null) {
     const { snippet, statistics, brandingSettings, contentDetails } =
       channeldetailData?.items[0];
+    const { items: channelVideos } = channelvideosData;
 
     return (
       <div className="channel">
@@ -77,13 +76,15 @@ function Channel() {
             <span>Playlist</span>
           </div>
           <div className="channel-videos-container">
-            {channelvideosData?.items?.map((item) => {
-              return <Card3 item={item} />;
-            })}
+            {channelVideos?.map((item) => (
+              <Card3 item={item} key={item.id.videoId} />
+            ))}
           </div>
         </div>
       </div>
     );
+  } else {
+    return <div>{loading}</div>;
   }
 }
 

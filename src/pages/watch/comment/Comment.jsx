@@ -1,41 +1,43 @@
+// import { commentData } from "../../../data/comment";
 import React, { useEffect, useState } from "react";
 import "./style.scss";
 import dayjs from "dayjs";
 import useFetch from "../../../hooks/useFetch";
-
-import { commentData } from "../../../data/comment";
-
 import { useParams } from "react-router-dom";
 function Comment() {
-  const param = useParams();
+  const { id } = useParams();
   const [paramData, setParamData] = useState({
     part: "snippet",
-    videoId: param.id,
+    videoId: id,
     maxResults: "100",
   });
-  // const { data: commentData, loading, error } = useFetch("/commentThreads", paramData);
+  const {
+    data: commentData,
+    loading,
+    error,
+  } = useFetch("/commentThreads", paramData);
 
   useEffect(() => {
     setParamData({
       part: "snippet",
-      videoId: param.id,
+      videoId: id,
       maxResults: "100",
     });
-  }, [param.id]);
+  }, [id]);
 
   return (
     <>
-      {commentData.items.map(({ snippet, id }) => (
-        <div key={id} className="comment">
-          <img src={snippet.topLevelComment.snippet.authorProfileImageUrl} />
+      {commentData?.items?.map(({ snippet }) => (
+        <div key={commentData?.items?.id} className="comment">
+          <img src={snippet?.topLevelComment?.snippet?.authorProfileImageUrl} />
           <div>
-            <span>{snippet.topLevelComment.snippet.authorDisplayName}</span>
+            <span>{snippet?.topLevelComment?.snippet?.authorDisplayName}</span>
             <span>
               {dayjs(
-                snippet?.topLevelComment.snippet.publishedAt?.slice(0, 10)
+                snippet?.topLevelComment?.snippet?.publishedAt?.slice(0, 10)
               ).format("MMM D, YYYY")}
             </span>
-            <p>{snippet.topLevelComment.snippet.textDisplay}</p>
+            <p>{snippet?.topLevelComment?.snippet?.textDisplay}</p>
           </div>
         </div>
       ))}
