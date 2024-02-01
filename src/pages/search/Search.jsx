@@ -7,6 +7,7 @@ import Card4 from "./card4/Card4";
 
 function Search() {
   const { query } = useParams();
+
   const [paramData, setParamData] = useState({
     q: query,
     part: "snippet,id",

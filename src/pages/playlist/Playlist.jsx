@@ -25,7 +25,6 @@ function Playlist() {
     loading,
     error,
   } = useFetch("/playlistItems", paramData);
-  console.log(playlistvideosData);
   const { data: playlistdetailsData } = useFetch("/playlists", paramData2);
 
   useEffect(() => {

@@ -28,6 +28,7 @@ function Header({ toggleSidebar }) {
           placeholder="Search"
           onChange={(e) => setSearchvalue(e.target.value)}
         />
+
         <button onClick={() => navigate(`/search/${searchvalue}`)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

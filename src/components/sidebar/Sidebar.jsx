@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, matchRoutes } from "react-router-dom";
 
 function Sidebar({ isSidebarOpen }) {
   const location = useLocation();
 
+  const routes = [
+    { path: "/watch/:id" },
+    { path: "/search/:query" },
+    { path: "/" },
+    { path: "/playlist/:id" },
+    { path: "/:id/videos" },
+  ];
+  const route = matchRoutes(routes, location);
+
   return (
     <div className="sidebar-top">
       {isSidebarOpen ? (
-        location.pathname != "watch" ? (
+        route[0].route.path !== "/watch/:id" ? (
           <div className="sidebar">
             <div className="sidebar-items">
               <div className="item">
@@ -39,10 +48,14 @@ function Sidebar({ isSidebarOpen }) {
             </div>
           </div>
         ) : (
-          "null"
+          ""
         )
       ) : (
-        <div className="sidebar2">
+        <div
+          className={
+            route[0].route.path !== "/watch/:id" ? "sidebar2" : "sidebar3"
+          }
+        >
           <div className="menu-group">
             <div className="menu-item">
               <img src="https://raw.githubusercontent.com/parthwebdev/UI-Components/7e774add0ddd88a4fb4057b01ad1f75a3edb4a03/Sidebars/01/svg/home.svg" />

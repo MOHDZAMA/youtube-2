@@ -8,7 +8,7 @@
     }
     .sidebar2 {
       z-index: 3;
-      position: fixed;
+      position: absolute;
       background-color: rgb(21, 21, 21);
       transition: 0.5s;
     }
@@ -54,9 +54,43 @@
 
 .sidebar2 {
   width: 230px;
-  height: 100%;
+  height: calc(100vh - 60px);
   transition: 0.3s ease-out;
 
+  .menu-group {
+    padding: 16px 0;
+    border-block: 1px solid #3f3f3f;
+    .menu-item {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      padding: 10px 25px;
+      border-radius: 10px;
+      margin: 0px 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: #272727;
+      }
+      img {
+        margin-right: 20px;
+      }
+      span {
+        // font-family: "Gill sans", sans-serif;
+        color: aliceblue;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.sidebar3 {
+  width: 230px;
+  height: calc(100vh - 60px);
+  transition: 0.5s ease-out;
+  z-index: 3;
+  position: absolute;
+  background-color: rgb(21, 21, 21);
   .menu-group {
     padding: 16px 0;
     border-block: 1px solid #3f3f3f;

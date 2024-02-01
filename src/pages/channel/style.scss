@@ -126,3 +126,34 @@
     }
   }
 }
+
+.channel-l {
+  height: 100%;
+  width: 100%;
+
+  overflow-x: scroll;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  margin: 15px auto 5px;
+  gap: 15px;
+  color: aliceblue;
+  .banner-l {
+    width: 80%;
+    height: 170px;
+    background-color: rgb(60, 60, 60);
+  }
+  .channel-info-l {
+    width: 80%;
+    display: flex;
+    height: 160px;
+    background-color: rgb(60, 60, 60);
+  }
+
+  .channel-videos-l {
+    width: 80%;
+    margin-top: 20px;
+    background-color: rgb(60, 60, 60);
+  }
+}

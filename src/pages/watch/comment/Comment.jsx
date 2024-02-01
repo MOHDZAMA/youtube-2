@@ -27,8 +27,8 @@ function Comment() {
 
   return (
     <>
-      {commentData?.items?.map(({ snippet }) => (
-        <div key={commentData?.items?.id} className="comment">
+      {commentData?.items?.map(({ snippet, id }) => (
+        <div key={id} className="comment">
           <img src={snippet?.topLevelComment?.snippet?.authorProfileImageUrl} />
           <div>
             <span>{snippet?.topLevelComment?.snippet?.authorDisplayName}</span>

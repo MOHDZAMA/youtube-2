@@ -84,7 +84,22 @@ function Channel() {
       </div>
     );
   } else {
-    return <div>{loading}</div>;
+    return (
+      <div className="channel-l">
+        <div className="banner-l"></div>
+
+        <div className="channel-info-l">
+          <div className="info-l">
+            <div></div>
+          </div>
+        </div>
+
+        <div className="channel-videos-l">
+          <div className="channel-videos-t-l"></div>
+          <div className="channel-videos-container-l"></div>
+        </div>
+      </div>
+    );
   }
 }
 
