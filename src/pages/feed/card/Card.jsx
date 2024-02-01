@@ -35,7 +35,7 @@ function Card({ item }) {
     <div className="card" onClick={handleClick}>
       <Img src={thumbnailUrl} alt="no-thumbnail.jpg" />
       <div className="card-b">
-        <Img src="./youtube.svg" alt="channel_logo" />
+        <img src="./youtube.svg" alt="channel_logo" />
         <div className="card-b-info">
           <h4>{title}</h4>
           <div className="card-b-info-s">

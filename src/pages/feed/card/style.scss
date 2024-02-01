@@ -14,11 +14,16 @@
     cursor: pointer;
   }
 
-  Img {
+  span {
     width: 100%;
     height: 70%;
-    border-radius: 15px;
-    object-fit: cover;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      object-fit: cover;
+    }
   }
 
   .card-b {
@@ -27,7 +32,7 @@
     max-width: 100%;
     // height: 100%;
 
-    Img {
+    img {
       height: 35px;
       width: 35px;
       margin-right: 10px;

@@ -5,12 +5,17 @@
   flex-direction: column;
   margin-top: 10px;
 
-  Img {
+  span {
     width: 100%;
     height: 60%;
-    border-radius: 15px;
-    object-fit: cover;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      object-fit: cover;
+    }
   }
+
   .card3-b {
     display: flex;
     margin-top: 10px;

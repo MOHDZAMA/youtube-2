@@ -52,7 +52,7 @@ function Card4({ item }) {
           </svg>
         </div>
         <span>{formattedPublishDate}</span>
-        <img src="./youtube.svg" alt="chanel_logo" />
+        <img src="../youtube.svg" alt="chanel_logo" />
         <small>{truncatedDescription}</small>
       </div>
     </div>
