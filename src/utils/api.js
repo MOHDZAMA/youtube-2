@@ -2,6 +2,7 @@ import axios from "axios";
 
 const BASE_URL = "https://youtube-v31.p.rapidapi.com";
 
+
 const TOKEN = import.meta.env.VITE_APP_YOUTUBE_TOKEN;
 
 export const fetchDataFromApi = async (url, params) => {
