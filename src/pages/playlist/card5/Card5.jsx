@@ -2,6 +2,7 @@ import React from "react";
 import "./style.scss";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
+import Img from "../../../components/lazyLoadImage/Img";
 
 function Card5({ item }) {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function Card5({ item }) {
       className="card5"
       onClick={() => navigate(`/watch/${item?.snippet?.resourceId?.videoId}`)}
     >
-      <img
+      <Img
         src={item?.snippet?.thumbnails?.medium?.url || "./no-thumbnail.jpg"}
         alt="no-thumbnail"
       />

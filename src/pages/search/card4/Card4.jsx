@@ -2,6 +2,7 @@ import React from "react";
 import "./style.scss";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
+import Img from "../../../components/lazyLoadImage/Img";
 
 function Card4({ item }) {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ function Card4({ item }) {
 
   return (
     <div className="card4" onClick={handleClick}>
-      <img
+      <Img
         src={item?.snippet?.thumbnails?.high?.url || "./no-thumbnail.jpg"}
         alt="no-thumbnail"
       />

@@ -3,6 +3,8 @@ import "./style.scss";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 
+import Img from "../../../components/lazyLoadImage/Img";
+
 function Card({ item }) {
   const navigate = useNavigate();
 
@@ -31,9 +33,9 @@ function Card({ item }) {
 
   return (
     <div className="card" onClick={handleClick}>
-      <img src={thumbnailUrl} alt="no-thumbnail.jpg" />
+      <Img src={thumbnailUrl} alt="no-thumbnail.jpg" />
       <div className="card-b">
-        <img src="./youtube.svg" alt="channel_logo" />
+        <Img src="./youtube.svg" alt="channel_logo" />
         <div className="card-b-info">
           <h4>{title}</h4>
           <div className="card-b-info-s">

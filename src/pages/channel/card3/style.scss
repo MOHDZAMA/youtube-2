@@ -5,7 +5,7 @@
   flex-direction: column;
   margin-top: 10px;
 
-  img {
+  Img {
     width: 100%;
     height: 60%;
     border-radius: 15px;
@@ -14,17 +14,7 @@
   .card3-b {
     display: flex;
     margin-top: 10px;
-    img {
-      height: 35px;
-      width: 35px;
-      margin-right: 10px;
-      border-radius: 50%;
-      background-color: rgba(249, 246, 243, 0.881);
-      &:hover {
-        cursor: pointer;
-        background-color: rgb(122, 121, 121);
-      }
-    }
+
     .card3-b-info {
       display: flex;
       flex-direction: column;
@@ -65,11 +55,6 @@
     height: 180px;
 
     .card3-b {
-      img {
-        height: 20px;
-        width: 20px;
-        margin-right: 5px;
-      }
       .card3-b-info {
         h4 {
           font-size: 10px;
