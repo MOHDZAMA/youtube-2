@@ -1,4 +1,4 @@
-import { suggestedData } from "../../data/suggested";
+// import { suggestedData } from "../../data/suggested";
 // import { videodetailsData } from "../../data/videodetails";
 import React, { useEffect, useState } from "react";
 import "./style.scss";
@@ -21,7 +21,7 @@ function Watch() {
     part: "contentDetails,snippet,statistics",
     id: id,
   });
-  // const { data: suggestedData } = useFetch("/search", paramData);
+  const { data: suggestedData } = useFetch("/search", paramData);
   const { data, loading, error } = useFetch("/videos", paramData2);
 
   useEffect(() => {
